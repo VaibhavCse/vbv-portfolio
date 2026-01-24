@@ -245,10 +245,23 @@ function App() {
 
   const experiences = [
     {
+      role: "Senior Software Engineer",
+      company: "Wipro Ltd. (Client: Meta)",
+      period: "Dec 2025 - Present",
+      location: "Bengaluru - Hybrid",
+      description: "Currently working as a Full Stack Software Engineer at Meta through Wipro. Involved in developing and maintaining web application features, collaborating with cross-functional teams, and working with modern full-stack technologies in a large-scale production environment.",
+      achievements: [
+        "Assigned to Meta as a Full Stack Engineer (SE-1)",
+        "Working on real-world production codebases using React and Hack",
+        "Collaborating with engineers, product managers, and QA teams in an enterprise setup",
+        "Following Meta engineering standards, code reviews, and best practices"
+      ]
+    },
+    {
       role: "Software Engineer",
       company: "Formidium Technologies",
-      period: "June 2022 - present",
-      location: "Hybrid",
+      period: "June 2022 - Nov 2025",
+      location: "Jaipur - Hybrid",
       description: "Lead full-stack development projects using MERN stack, delivering scalable and high-performance web applications. I collaborate closely with teams, mentor junior developers, and ensure smooth, on-time delivery of complex technical projects.",
       achievements: [
         "Reduced infrastructure costs by 40% through optimization",
@@ -262,7 +275,7 @@ function App() {
       role: "Jr. Software Engineer",
       company: "Formidium Technologies",
       period: "Jul 2021 - May 2022",
-      location: "Hybrid",
+      location: "Jaipur - Hybrid",
       description: "I worked on full stack development, building web applications with Sails.js and Node.js, and gaining expertise in system architecture, API design, and database management.",
       achievements: [
         "Contributed to the development of scalable web applications using Node.js, Express, React.js, and MongoDB",
@@ -274,7 +287,7 @@ function App() {
       role: "Graduate Engineering Trainee",
       company: "Formidium Technologies",
       period: "March 2021 - June 2021",
-      location: "Remote",
+      location: "Jaipur - Remote",
       description: "Developed client websites and learned full-stack development. Gained hands-on experience in React.js, Node.js, and database management while contributing to real-world projects.",
       achievements: [
         "Gained hands-on experience in React.js for component-based development and state management. ",
@@ -286,7 +299,7 @@ function App() {
       role: "Android App development",
       company: "Rawattech",
       period: "Jan 2021 - March 2021",
-      location: "On-site",
+      location: "Jaipur - On-site",
       description: "Learned Android app development and built simple applications using React Native",
       achievements: [
         "Android app development through React Native",
@@ -296,7 +309,7 @@ function App() {
       role: "Technical Analyst",
       company: "Requin solutions Pvt. Ltd",
       period: "Sep 2020 - Dec 2020",
-      location: "On-site",
+      location: "Jaipur - On-site",
       description: "Java development intern",
       achievements: [
         "Java Development"
@@ -479,7 +492,7 @@ function App() {
             </p>
             
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              {['React', 'Node.js', 'MongoDB', 'TypeScript', 'Next.js', 'Tailwind', 'AWS / OCI', 'Javascript', 'Rest APIs', 'Docker'].map((skill, idx) => (
+              {['React', 'Node.js', 'Hack', 'MongoDB', 'TypeScript', 'Next.js', 'Tailwind', 'AWS / OCI', 'Javascript', 'GraphQL', 'Rest APIs', 'Docker'].map((skill, idx) => (
                 <div 
                   key={skill} 
                   className="bg-gray-900 p-3 sm:p-4 rounded border border-yellow-400/20 hover:border-yellow-400 hover:scale-105 transition-all duration-300 cursor-pointer"
