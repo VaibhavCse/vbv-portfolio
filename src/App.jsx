@@ -4,7 +4,7 @@ import profile from "../public/profile_pic_new.jpg";
 import csd from "../public/projects/CSD.png";
 import marketplace from "../public/projects/marketplace.png";
 import tax from "../public/projects/taxowealth.png";
-import lusora from "../public/projects/lusora.png";
+import lusora from "../public/projects/lusorafnb.png";
 import syncpath from "../public/projects/syncpath.png";
 import wellnessherb from "../public/projects/wellness_herb.png";
 import sgb from "../public/projects/sgbindustries.png";
@@ -160,15 +160,15 @@ function App() {
     id: 6,
     title: "Lusora",
     category: "website",
-    description: "Luxury mineral water brand website with modern UI/UX",
+    description: "Luxury CSD & mineral water brand website with modern UI/UX",
     fullDescription:
-      "Designed a premium digital identity for Lusora, a luxury mineral water brand. Built a smooth, mobile-friendly React/Next.js interface with WhatsApp messaging automation, email workflows, Google Maps integration, and a high-end luxury UI experience.",
+      "Designed a premium digital identity for Lusora, a luxury mineral water and carbonated soft drinks brand. Built a smooth, mobile-friendly React/Next.js interface with WhatsApp messaging automation, email workflows, Google Maps integration, and a high-end luxury UI experience.",
     tech: ["React.js", "Next.js", "Email Integration", "WhatsApp API", "Google Maps API"],
     image: lusora,
-    demoLink: "https://lusora.in/",
+    demoLink: "https://www.lusorafnb.com/",
     githubLink: "",
     featured: false,
-    date: "2024"
+    date: "2025"
   },
   {
     id: 7,
