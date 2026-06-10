@@ -116,18 +116,18 @@ function TalkingModal({ onClose }) {
     return () => audio.removeEventListener('ended', onEnded);
   }, []);
 
-  /* Typewriter — runs independently of audio */
+  /* Typewriter — slowed to roughly match audio pacing
+     ~110ms per char + 1800ms pause between lines */
   useEffect(() => {
     const cur = lines[lineIdx] || '';
     if (charIdx < cur.length) {
-      const t = setTimeout(() => { setTyped(p => p + cur[charIdx]); setCharIdx(c => c + 1); }, 40);
+      const t = setTimeout(() => { setTyped(p => p + cur[charIdx]); setCharIdx(c => c + 1); }, 60);
       return () => clearTimeout(t);
     } else if (lineIdx < lines.length - 1) {
-      const t = setTimeout(() => { setLineIdx(l => l + 1); setCharIdx(0); setTyped(''); }, 600);
+      const t = setTimeout(() => { setLineIdx(l => l + 1); setCharIdx(0); setTyped(''); }, 900);
       return () => clearTimeout(t);
-    } else {
-      setSpeaking(false);
     }
+    // don't setSpeaking(false) here — audio ended event handles that
   }, [charIdx, lineIdx]);
 
   const waveH = [8,14,22,32,40,32,22,14,8,12,20,30,38,30,20,12,8];
