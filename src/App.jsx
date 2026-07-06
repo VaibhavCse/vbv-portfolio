@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+/* eslint-disable react/prop-types, react-hooks/exhaustive-deps */
+import { useState, useEffect, useRef } from 'react';
 import {
   Menu, X, FileText, Github, Linkedin, Mail, MessageSquare,
   ExternalLink, Search, Code, Brain, Globe, XCircle,
-  Calendar, Briefcase, Sparkles, ChevronDown
+  Calendar, Briefcase, Sparkles, ChevronDown, Cloud, Cpu, ShieldCheck
 } from 'lucide-react';
 import profile from "../public/profile_pic_new.jpg";
 import csd from "../public/projects/CSD.png";
@@ -288,6 +289,231 @@ function ExperienceSection({ experiences }) {
 /* ═══════════════════════════════
    MAIN APP
 ═══════════════════════════════ */
+function CertificationsSection({ certifications, vis }) {
+  return (
+    <section
+      id="certifications"
+      style={{
+        padding: "clamp(60px,10vw,120px) clamp(20px,5vw,40px)",
+        background: "#050505",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          left: "-4%",
+          top: "8%",
+          fontFamily: "'Bebas Neue',sans-serif",
+          fontSize: "clamp(92px,18vw,230px)",
+          color: "rgba(250,204,21,0.025)",
+          lineHeight: 1,
+          pointerEvents: "none",
+          userSelect: "none",
+        }}
+      >
+        CERT
+      </div>
+
+      <div
+        style={{
+          maxWidth: "980px",
+          margin: "0 auto",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
+        <div
+          id="cert-hdr"
+          data-animate
+          className={`vc-reveal${vis("cert-hdr") ? " vis" : ""}`}
+          style={{ marginBottom: "clamp(34px,6vw,56px)" }}
+        >
+          <div
+            style={{
+              fontSize: "11px",
+              letterSpacing: "0.4em",
+              textTransform: "uppercase",
+              color: "#FACC15",
+              marginBottom: "14px",
+            }}
+          >
+            Verified Learning
+          </div>
+
+          <div
+            style={{
+              fontFamily: "'Bebas Neue',sans-serif",
+              fontSize: "clamp(38px,7vw,78px)",
+              lineHeight: 1,
+            }}
+          >
+            CERTIFICATIONS.
+          </div>
+        </div>
+
+        <div className="cert-list">
+          {certifications.map((cert, idx) => {
+            const Icon = cert.icon;
+
+            const Card = (
+              <article
+                className={`cert-card vc-reveal${
+                  vis(`cert-${idx}`) ? " vis" : ""
+                }`}
+                id={`cert-${idx}`}
+                data-animate
+                style={{
+                  transitionDelay: `${idx * 0.1}s`,
+                  cursor: cert.credentialUrl ? "pointer" : "default",
+                }}
+              >
+                <div
+                  className="cert-logo"
+                  style={{
+                    background: cert.logoBg,
+                    color: cert.logoColor,
+                  }}
+                >
+                  {cert.logoText ? (
+                    <span>{cert.logoText}</span>
+                  ) : (
+                    <Icon size={28} />
+                  )}
+                </div>
+
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "flex-start",
+                      justifyContent: "space-between",
+                      gap: "16px",
+                      marginBottom: "6px",
+                    }}
+                  >
+                    <div>
+                      <h3
+                        style={{
+                          fontSize: "clamp(16px,2vw,20px)",
+                          lineHeight: 1.28,
+                          margin: 0,
+                          fontWeight: 700,
+                        }}
+                      >
+                        {cert.title}
+                      </h3>
+
+                      <p
+                        style={{
+                          color: "#bdbdbd",
+                          fontSize: "14px",
+                          marginTop: "3px",
+                        }}
+                      >
+                        {cert.issuer}
+                      </p>
+                    </div>
+
+                    <div className="cert-badge">
+                      <Icon size={16} />
+                    </div>
+                  </div>
+
+                  <p
+                    style={{
+                      color: "#6f6f6f",
+                      fontSize: "13px",
+                      lineHeight: 1.6,
+                      marginBottom: "7px",
+                    }}
+                  >
+                    {cert.period}
+                  </p>
+
+                  {cert.credentialId && (
+                    <p
+                      style={{
+                        color: "#555",
+                        fontSize: "12px",
+                        lineHeight: 1.6,
+                        marginBottom: "13px",
+                        wordBreak: "break-word",
+                      }}
+                    >
+                      Credential ID {cert.credentialId}
+                    </p>
+                  )}
+
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: "8px",
+                      alignItems: "center",
+                      marginTop: "14px",
+                    }}
+                  >
+                    <span
+                      style={{
+                        color: "#fff",
+                        fontWeight: 700,
+                        fontSize: "12px",
+                      }}
+                    >
+                      Skills:
+                    </span>
+
+                    {cert.skills.map((skill) => (
+                      <span key={skill} className="cert-skill">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+
+                  {cert.credentialUrl && (
+                    <div
+                      style={{
+                        marginTop: "18px",
+                        color: "#FACC15",
+                        fontSize: "13px",
+                        fontWeight: 600,
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "6px",
+                      }}
+                    >
+                      View Credential ↗
+                    </div>
+                  )}
+                </div>
+              </article>
+            );
+
+            return cert.credentialUrl ? (
+              <a
+                key={cert.title}
+                href={cert.credentialUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                }}
+              >
+                {Card}
+              </a>
+            ) : (
+              <div key={cert.title}>{Card}</div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function App() {
   const [introVisible, setIntroVisible] = useState(true);
   const [heroVisible, setHeroVisible] = useState(false);
@@ -373,6 +599,60 @@ export default function App() {
     { role:"Technical Analyst Intern", company:"Requin Solutions Pvt. Ltd", period:"Sep 2020 - Dec 2020", location:"Jaipur · On-site", description:"Java development internship — foundation of software engineering principles.", achievements:["Core Java development and OOP principles"] },
   ];
 
+  const certifications = [
+    {
+      title: "Claude Certified Architect - Foundations",
+      issuer: "Anthropic",
+      period: "Issued Jul 2026 · Expires Jul 2027",
+      skills: [
+        "Claude",
+        "AI Agents",
+        "Prompt Engineering",
+        "System Design",
+        "LLM Applications"
+      ],
+      icon: Brain,
+      logoText: "AI",
+      logoBg: "#1f2937",
+      logoColor: "#ffffff",
+      credentialUrl: "https://www.credly.com/badges/a4680adc-00cd-47bc-93a7-8007903ec05e/public_url"
+    },
+    {
+      title:"AWS Certified Cloud Practitioner",
+      issuer:"Amazon Web Services (AWS)",
+      period:"Issued May 2026 · Expires May 2029",
+      credentialId:"12fed24e-4e6d-4bc7-9ba1-0044207c5348",
+      skills:["AWS Cloud Computing"],
+      icon:Cloud,
+      logoText:"AWS",
+      logoBg:"#f3f4f6",
+      logoColor:"#111827",
+      credentialUrl: "https://www.credly.com/badges/12fed24e-4e6d-4bc7-9ba1-0044207c5348/public_url"
+    },
+    {
+      title:"AWS Partner: Generative AI Technical",
+      issuer:"Amazon Web Services (AWS)",
+      period:"Issued Mar 2026",
+      skills:["Amazon Web Services (AWS)","GenAI Virtual Assistants","Prompt Engineering","LLM Integration"],
+      icon:Cpu,
+      logoText:"aws",
+      logoBg:"#111827",
+      logoColor:"#fff",
+      credentialUrl: "https://www.credly.com/badges/11befcb7-5612-4620-855b-3ad1075c4e09/public_url"
+    },
+    {
+      title:"Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
+      issuer:"Oracle",
+      period:"Issued Oct 2025 · Expires Nov 2027",
+      skills:["Oracle Cloud Infrastructure","AI Foundations","Cloud Computing"],
+      icon:ShieldCheck,
+      logoText:"O",
+      logoBg:"#d64535",
+      logoColor:"#fff",
+      credentialUrl: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=BD1F600E7F3202CCF8E3B3AA77F423E6234C951C7F21B633F49208421F151D11"
+    },
+  ];
+
   const categories = [
     { id:'all', label:'All Projects', icon:Globe },
     { id:'web', label:'Web Apps', icon:Code },
@@ -399,6 +679,9 @@ export default function App() {
   });
   const displayed = filtered.slice(0, visibleCount);
   const hasMore = filtered.length > visibleCount;
+  const scrollProgress = typeof document === 'undefined'
+    ? 0
+    : Math.min(100, Math.max(0, (scrollY / Math.max(1, document.documentElement.scrollHeight - window.innerHeight)) * 100));
 
   return (
     <div style={{ background:'#000', color:'#fff', overflowX:'hidden', fontFamily:"'Outfit',sans-serif", cursor:'none' }}>
@@ -426,11 +709,26 @@ export default function App() {
         .vc-reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
         .vc-reveal.vis{opacity:1;transform:translateY(0)}
 
+        .vc-pathway{position:fixed;left:24px;top:86px;bottom:30px;width:34px;z-index:80;pointer-events:none;display:flex;justify-content:center}
+        .vc-pathway-track{position:relative;width:1px;height:100%;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.14) 8%,rgba(255,255,255,.14) 92%,transparent)}
+        .vc-pathway-fill{position:absolute;left:0;top:0;width:1px;background:linear-gradient(to bottom,#FACC15,rgba(250,204,21,.3));box-shadow:0 0 18px rgba(250,204,21,.35);transition:height .16s ease-out}
+        .vc-pathway-node{position:absolute;left:50%;width:11px;height:11px;border-radius:50%;background:#FACC15;box-shadow:0 0 0 5px rgba(250,204,21,.12),0 0 22px rgba(250,204,21,.55);transform:translate(-50%,-50%);transition:top .16s ease-out}
+        .vc-pathway-label{position:absolute;left:18px;top:0;writing-mode:vertical-rl;text-transform:uppercase;letter-spacing:.22em;font-size:9px;color:rgba(250,204,21,.45)}
+
         .proj-grid-wrap{display:grid;gap:16px;grid-template-columns:repeat(3,1fr)}
         .proj-card{background:#0d0d0d;border:1px solid #1a1a1a;position:relative;overflow:hidden;cursor:pointer;transition:border-color .3s,transform .3s,box-shadow .3s;border-radius:2px;animation:fadeUp .5s ease both;min-width:0}
         .proj-card:hover{border-color:rgba(250,204,21,.5);transform:translateY(-4px);box-shadow:0 12px 40px rgba(250,204,21,.1)}
         .proj-card:hover .proj-img{transform:scale(1.06)}
         .proj-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+
+        .cert-list{position:relative;display:flex;flex-direction:column;gap:18px;padding-left:34px}
+        .cert-list::before{content:'';position:absolute;left:7px;top:22px;bottom:22px;width:1px;background:linear-gradient(to bottom,#FACC15,rgba(250,204,21,.18))}
+        .cert-card{position:relative;display:flex;gap:18px;background:#080808;border:1px solid #1a1a1a;border-left:3px solid rgba(250,204,21,.72);padding:clamp(18px,3vw,26px);border-radius:2px;transition:border-color .3s,transform .3s,box-shadow .3s,opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+        .cert-card::before{content:'';position:absolute;left:-41px;top:31px;width:14px;height:14px;border-radius:50%;background:#FACC15;box-shadow:0 0 0 5px rgba(250,204,21,.12)}
+        .cert-card:hover{border-color:rgba(250,204,21,.42);transform:translateX(6px);box-shadow:0 12px 44px rgba(250,204,21,.08)}
+        .cert-logo{width:60px;height:60px;flex:0 0 60px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-weight:800;letter-spacing:.02em;font-size:17px;text-transform:uppercase}
+        .cert-badge{width:34px;height:34px;border:1px solid rgba(250,204,21,.22);color:#FACC15;background:rgba(250,204,21,.04);display:flex;align-items:center;justify-content:center;flex:0 0 34px}
+        .cert-skill{padding:5px 10px;background:rgba(250,204,21,.07);border:1px solid rgba(250,204,21,.14);color:#FACC15;font-size:12px;border-radius:2px}
 
         .vc-skill{padding:7px 14px;border:1px solid rgba(250,204,21,.2);font-size:12px;color:#FACC15;letter-spacing:.04em;transition:background .2s,border-color .2s;cursor:default;border-radius:2px}
         .vc-skill:hover{background:rgba(250,204,21,.08);border-color:#FACC15}
@@ -455,12 +753,21 @@ export default function App() {
 
         @media(max-width:680px){
           #vc-cursor,#vc-ring{display:none!important}
+          .vc-pathway{display:none!important}
           .vc-hero-grid{grid-template-columns:1fr!important}
           .vc-about-grid{grid-template-columns:1fr!important}
           .proj-grid-wrap{grid-template-columns:1fr!important}
+          .cert-list{padding-left:22px}
+          .cert-list::before{left:5px}
+          .cert-card{flex-direction:column;gap:14px}
+          .cert-card::before{left:-28px;top:30px}
+          .cert-logo{width:54px;height:54px;flex-basis:54px}
           .vc-connect-grid{grid-template-columns:1fr 1fr!important}
           .vc-nav-links-d{display:none!important}
           .photo-frame{width:min(280px,80vw)!important;height:min(340px,90vw)!important}
+        }
+        @media(max-width:1024px){
+          .vc-pathway{display:none!important}
         }
         @media(min-width:681px) and (max-width:1024px){
           .proj-grid-wrap{grid-template-columns:repeat(2,1fr)!important}
@@ -470,6 +777,13 @@ export default function App() {
 
       <div id="vc-cursor" ref={cursorRef}/>
       <div id="vc-ring" ref={ringRef}/>
+      <div className="vc-pathway" aria-hidden="true">
+        <div className="vc-pathway-track">
+          <div className="vc-pathway-fill" style={{ height:`${scrollProgress}%` }} />
+          <div className="vc-pathway-node" style={{ top:`${scrollProgress}%` }} />
+          <div className="vc-pathway-label">Pathway</div>
+        </div>
+      </div>
 
       {introVisible && <IntroSplash onDone={() => { setIntroVisible(false); setHeroVisible(true); }}/>}
       {talkingOpen && <TalkingModal onClose={() => setTalkingOpen(false)}/>}
@@ -480,22 +794,22 @@ export default function App() {
           <span style={{ color:'#FACC15' }}>V</span>AIBHAV <span style={{ color:'#2a2a2a' }}>·</span> <span style={{ color:'#555' }}>VC</span>
         </div>
         <div className="vc-nav-links-d" style={{ display:'flex', gap:'28px' }}>
-          {['home','about','projects','experience','connect'].map(s => (
+          {['home','about','projects','experience','certifications','connect'].map(s => (
             <button key={s} className="vc-navlink" onClick={() => scrollTo(s)}>{s}</button>
           ))}
         </div>
-        <button onClick={() => setMenuOpen(!menuOpen)} style={{ background:'none', border:'none', color:'#fff', cursor:'none', padding:'4px', display:'flex' }}>
-          {menuOpen ? <X size={22}/> : <Menu size={22}/>}
+        <button onClick={() => setMenuOpen(!menuOpen)} style={{ background:'none', border:'none', color:'#fff', cursor:'none', padding:'2px', display:'flex' }}>
+          {menuOpen ? <X size={18}/> : <Menu size={18}/>}
         </button>
       </nav>
 
       {/* FULLSCREEN MENU */}
       <div style={{ position:'fixed', inset:0, background:'#000', zIndex:200, display:'flex', alignItems:'center', justifyContent:'center', opacity:menuOpen?1:0, visibility:menuOpen?'visible':'hidden', transition:'opacity .5s, visibility .5s' }}>
         <button onClick={() => setMenuOpen(false)} style={{ position:'absolute', top:'20px', right:'24px', background:'none', border:'none', color:'#fff', cursor:'pointer' }}><X size={24}/></button>
-        <div style={{ display:'flex', flexDirection:'column', gap:'18px', textAlign:'center' }}>
-          {['home','about','projects','experience','connect'].map((s,i) => (
+        <div style={{ display:'flex', flexDirection:'column', gap:'8px', textAlign:'center' }}>
+          {['home','about','projects','experience','certifications','connect'].map((s,i) => (
             <div key={s} style={{ opacity:menuOpen?1:0, transform:menuOpen?'translateY(0)':'translateY(14px)', transition:`all .45s ease ${i*70}ms` }}>
-              <button onClick={() => scrollTo(s)} style={{ background:'none', border:'none', cursor:'pointer', fontFamily:"'Bebas Neue',sans-serif", fontSize:'clamp(38px,9vw,76px)', letterSpacing:'0.08em', color:'#fff', textTransform:'uppercase', transition:'color .2s' }}
+              <button onClick={() => scrollTo(s)} style={{ background:'none', border:'none', cursor:'pointer', fontFamily:"'Bebas Neue',sans-serif", fontSize:"clamp(34px, 5vw, 58px)", letterSpacing:'0.08em', color:'#fff', textTransform:'uppercase', transition:'color .2s' }}
                 onMouseEnter={e => e.target.style.color='#FACC15'} onMouseLeave={e => e.target.style.color='#fff'}>{s}</button>
             </div>
           ))}
@@ -701,6 +1015,9 @@ export default function App() {
 
       {/* EXPERIENCE */}
       <ExperienceSection experiences={experiences}/>
+
+      {/* CERTIFICATIONS */}
+      <CertificationsSection certifications={certifications} vis={vis}/>
 
       {/* CONNECT */}
       <section id="connect" style={{ padding:'clamp(60px,10vw,120px) clamp(20px,5vw,40px)', background:'#080808' }}>
