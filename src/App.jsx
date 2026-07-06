@@ -17,7 +17,7 @@ import avocsas from "../public/projects/avocsas.png";
 import ecogrocer from "../public/projects/OrganicFoods.png";
 import pet from "../public/projects/pet.png";
 import pulse from "../public/projects/pulse.png";
-import resume from "../public/VaibhavChaudharyResume (31).pdf";
+import resume from "../public/VaibhavChaudhary.pdf";
 import introVoice from "../public/intro_voice.mp3";
 
 /* ═══════════════════════════════
