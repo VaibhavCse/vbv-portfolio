@@ -18,8 +18,9 @@ import avocsas from "../public/projects/avocsas.png";
 import ecogrocer from "../public/projects/OrganicFoods.png";
 import pet from "../public/projects/pet.png";
 import pulse from "../public/projects/pulse.png";
-import resume from "../public/VaibhavChaudharyResume.pdf";
+import resume from "../public/GenAI_VaibhavChaudhary_Resume.pdf";
 import introVoice from "../public/intro_voice.mp3";
+import movemate from "../public/projects/movemate_ai.png";
 
 /* ═══════════════════════════════
    INTRO SPLASH
@@ -61,7 +62,7 @@ function IntroSplash({ onDone }) {
       </div>
       <div style={{ width:lineGrow?'220px':'0px', height:'2px', background:'#FACC15', marginTop:'18px', transition:'width 0.9s ease 0.3s' }} />
       <div style={{ fontSize:'clamp(10px,2vw,13px)', letterSpacing:'0.35em', color:'#666', marginTop:'14px', textTransform:'uppercase', opacity:subShow?1:0, transition:'opacity 0.6s ease', fontFamily:"'Outfit',sans-serif" }}>
-        Full Stack Developer · 5+ Years MERN
+        Full Stack Developer · GenAI Engineer
       </div>
     </div>
   );
@@ -578,6 +579,8 @@ export default function App() {
   const scrollTo = id => { document.getElementById(id)?.scrollIntoView({behavior:'smooth'}); setMenuOpen(false); };
 
   const allProjects = [
+    { id:0, title:"MoveMate AI", category:"web", description:"AI-powered relocation assistant for natural-language apartment discovery", fullDescription:"Built an AI-powered relocation assistant using LangGraph, Gemini, FastAPI, and Next.js to help users discover rental apartments through natural-language queries. Implemented LLM tool calling, structured data extraction, real-time web search with Tavily, preference-based filtering, nearby gym discovery, conversation state/memory, and LangSmith observability for a production-oriented GenAI workflow.", tech:["LangGraph","Gemini","FastAPI","Next.js","Tavily","LangSmith"], image:movemate, demoLink:"https://movemate-ai.onrender.com/", featured:true, isAI:true, date:"2026" },
+
     { id:1, title:"Pulse", category:"web", description:"Cloud-based team communication & email campaign platform", fullDescription:"Cloud-based communication platform for team and email campaigns with custom templates, SSO authentication, and real-time analytics. Built using Node.js, React, and MongoDB. Integrated an AI-powered chatbot using a RAG (Retrieval-Augmented Generation) approach to deliver intelligent, context-aware responses and enhance user engagement.", tech:["Node.js","Nextjs","MongoDB","RAG","Socket.io","SSO"], image:pulse, demoLink:"https://pulse.formidium.com", featured:true, date:"2025" },
 
     { id:2, title:"CommonSubDoc", category:"web", description:"Investor onboarding and compliance automation platform", fullDescription:"CommonSubDoc is an advanced investor relations and compliance automation platform. It streamlines onboarding, KYC/AML verification, document workflows, and real-time reporting. Built intuitive dashboards, secure API integrations, automated compliance pipelines, and digital approvals to enhance transparency and operational efficiency.", tech:["Node.js","MongoDB","EJS","Tailwind CSS","Shufti Pro","AWS"], image:csd, demoLink:"https://commonsubdoc.com/", featured:true, date:"2024" },
@@ -614,6 +617,17 @@ export default function App() {
 
   const certifications = [
     {
+      title:"AWS Partner: Generative AI Technical",
+      issuer:"Amazon Web Services (AWS)",
+      period:"Issued Mar 2026",
+      skills:["Amazon Web Services (AWS)","GenAI Virtual Assistants","Prompt Engineering","LLM Integration"],
+      icon:Cpu,
+      logoText:"aws",
+      logoBg:"#111827",
+      logoColor:"#fff",
+      credentialUrl: "https://www.credly.com/badges/11befcb7-5612-4620-855b-3ad1075c4e09/public_url"
+    },
+    {
       title: "Claude Certified Architect - Foundations",
       issuer: "Anthropic",
       period: "Issued Jul 2026 · Expires Jul 2027",
@@ -641,17 +655,6 @@ export default function App() {
       logoBg:"#f3f4f6",
       logoColor:"#111827",
       credentialUrl: "https://www.credly.com/badges/12fed24e-4e6d-4bc7-9ba1-0044207c5348/public_url"
-    },
-    {
-      title:"AWS Partner: Generative AI Technical",
-      issuer:"Amazon Web Services (AWS)",
-      period:"Issued Mar 2026",
-      skills:["Amazon Web Services (AWS)","GenAI Virtual Assistants","Prompt Engineering","LLM Integration"],
-      icon:Cpu,
-      logoText:"aws",
-      logoBg:"#111827",
-      logoColor:"#fff",
-      credentialUrl: "https://www.credly.com/badges/11befcb7-5612-4620-855b-3ad1075c4e09/public_url"
     },
     {
       title:"Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
@@ -682,8 +685,8 @@ export default function App() {
     { icon:FileText, label:'Resume', href:resume, download:true },
   ];
 
-  const marqueeItems = ['React.js','Node.js','MongoDB','Next.js','TypeScript','AWS','GraphQL','Docker','Tailwind CSS','Socket.io','Express.js','MERN Stack'];
-  const skills = ['React','Node.js','Hack','MongoDB','TypeScript','Next.js','Tailwind','AWS / OCI','Javascript','GraphQL','Rest APIs','Docker'];
+  const marqueeItems = ['React.js','Node.js','MongoDB','Next.js','TypeScript','LangChain','LangGraph','AWS','Docker','Tailwind CSS','Express.js','MERN Stack'];
+  const skills = ['React','Node.js','MongoDB','TypeScript','Next.js','Tailwind','AWS / OCI','LangChain','LangGraph','GraphQL','Rest APIs','Docker'];
 
   const filtered = allProjects.filter(p => {
     const catOk = filterCategory==='all' || p.category===filterCategory;
@@ -841,7 +844,7 @@ export default function App() {
               FULL<br/><span style={{ color:'#FACC15' }}>STACK</span><br/>DEV.
             </div>
             <div style={{ fontSize:'clamp(13px,1.8vw,15px)', color:'#666', marginTop:'16px', lineHeight:1.65, opacity:heroVisible?1:0, transform:heroVisible?'translateY(0)':'translateY(16px)', transition:'all .7s ease .7s' }}>
-              <span style={{ color:'#fff', fontWeight:600 }}>Vaibhav Chaudhary</span> — SDE 2 at Wipro.<br/>5+ Years MERN Stack · Building the web one commit at a time.
+              <span style={{ color:'#fff', fontWeight:600 }}>Vaibhav Chaudhary</span> — SDE 2 at Wipro.<br/>5+ Years MERN Stack · Shipping GenAI features that actually work.
             </div>
             <div style={{ display:'flex', gap:'13px', marginTop:'clamp(22px,4vw,34px)', flexWrap:'wrap', opacity:heroVisible?1:0, transform:heroVisible?'translateY(0)':'translateY(16px)', transition:'all .7s ease .9s' }}>
               <button className="vc-btn-y" onClick={() => scrollTo('projects')}>View Work</button>
@@ -896,7 +899,7 @@ export default function App() {
             <div style={{ fontSize:'11px', letterSpacing:'0.4em', textTransform:'uppercase', color:'#FACC15', marginBottom:'13px' }}>Who I Am</div>
             <div style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:'clamp(38px,6vw,76px)', lineHeight:1, marginBottom:'20px' }}>CODE THAT<br/><span style={{ color:'#FACC15' }}>SHIPS.</span></div>
             <p style={{ fontSize:'clamp(14px,1.6vw,16px)', lineHeight:1.8, color:'#666', marginBottom:'13px' }}>Full Stack Developer with 5+ years of hands-on MERN stack experience, building scalable, high-performance web applications from the ground up.</p>
-            <p style={{ fontSize:'clamp(14px,1.6vw,16px)', lineHeight:1.8, color:'#666', marginBottom:'26px' }}>I integrate LLMs via OpenAI and RAG pipelines, ship AI-powered features, and love turning complex business problems into clean, elegant code.</p>
+            <p style={{ fontSize:'clamp(14px,1.6vw,16px)', lineHeight:1.8, color:'#666', marginBottom:'26px' }}>I build agentic AI workflows with LangChain and LangGraph, integrate LLMs like Gemini into production RAG pipelines, and love turning complex business problems into clean, elegant code.</p>
             <div style={{ display:'flex', flexWrap:'wrap', gap:'8px' }}>
               {skills.map(s => <span key={s} className="vc-skill">{s}</span>)}
             </div>
@@ -904,14 +907,14 @@ export default function App() {
           <div id="about-stats" data-animate className={`vc-reveal${vis('about-stats')?' vis':''}`} style={{ transitionDelay:'0.14s' }}>
             <div style={{ display:'flex', flexDirection:'column', gap:'22px' }}>
               <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'10px' }}>
-                {[['5+','Years Experience'],['11+','Projects Shipped'],['40%','Infra Cost Saved'],['25%','API Speed Boost']].map(([n,l]) => (
+                {[['5+','Years Experience'],['13+','Projects Shipped'],['40%','Infra Cost Saved'],['25%','API Speed Boost']].map(([n,l]) => (
                   <div key={l} style={{ padding:'clamp(14px,2.5vw,22px)', background:'#0a0a0a', border:'1px solid #1a1a1a' }}>
                     <div style={{ fontFamily:"'Bebas Neue',sans-serif", fontSize:'clamp(34px,5vw,46px)', color:'#FACC15', lineHeight:1 }}>{n}</div>
                     <div style={{ fontSize:'11px', color:'#444', letterSpacing:'0.05em', marginTop:'3px' }}>{l}</div>
                   </div>
                 ))}
               </div>
-              {[['MERN Stack',98],['React / Next.js',95],['System Design',85],['AI / LLM Integration',78]].map(([l,p]) => (
+              {[['MERN Stack',98],['React / Next.js',95],['System Design',85],['AI / LLM Integration',80]].map(([l,p]) => (
                 <div key={l}>
                   <div style={{ display:'flex', justifyContent:'space-between', fontSize:'12px', color:'#666', marginBottom:'6px' }}>
                     <span>{l}</span><span style={{ color:'#FACC15' }}>{p}%</span>
@@ -959,6 +962,7 @@ export default function App() {
             <div className="proj-grid-wrap">
               {displayed.map((p,idx) => (
                 <div key={p.id} className="proj-card" onClick={() => setSelectedProject(p)} style={{ animationDelay:`${idx*50}ms` }}>
+                  {p.isAI && <div style={{ position:'absolute', top:'12px', left:'12px', zIndex:2, background:'#000', border:'1px solid #FACC15', color:'#FACC15', fontSize:'9px', fontWeight:700, padding:'3px 8px', letterSpacing:'0.08em', display:'flex', alignItems:'center', gap:'4px' }}><Sparkles size={10}/>AI BUILD</div>}
                   {p.featured && <div style={{ position:'absolute', top:'12px', right:'12px', zIndex:2, background:'#FACC15', color:'#000', fontSize:'9px', fontWeight:700, padding:'3px 8px', letterSpacing:'0.08em' }}>FEATURED</div>}
                   <div style={{ height:'170px', overflow:'hidden', position:'relative' }}>
                     <img className="proj-img" src={p.image} alt={p.title}/>
