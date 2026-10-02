@@ -617,6 +617,23 @@ export default function App() {
 
   const certifications = [
     {
+      title: "Foundation: Introduction to LangChain - Python",
+      issuer: "LangChain Academy",
+      period: "Issued Oct 2026 · Expires Oct 2028",
+      credentialId: "22eperq2wk",
+      skills: [
+        "LangChain",
+        "Python",
+        "LLM Applications",
+        "AI Agents"
+      ],
+      icon: Brain,
+      logoText: "LC",
+      logoBg: "#1f2937",
+      logoColor: "#ffffff",
+      credentialUrl: "https://academy.langchain.com/certificates/22eperq2wk"
+    },
+    {
       title:"AWS Partner: Generative AI Technical",
       issuer:"Amazon Web Services (AWS)",
       period:"Issued Mar 2026",
